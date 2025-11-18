@@ -1,4 +1,4 @@
 ---
 hostname: netbird
 logLevel: info
-managementUrl: https://nb.footprintit.net:33073
+managementUrl: ""
