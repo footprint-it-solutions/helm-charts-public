@@ -1,0 +1,4 @@
+---
+hostname: netbird
+logLevel: info
+managementUrl: ""
