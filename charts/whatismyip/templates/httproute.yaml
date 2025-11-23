@@ -2,6 +2,8 @@
 apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
+  annotations:
+    link.argocd.argoproj.io/external-link: https://{{ first .Values.hosts }}
   name: {{ include "whatismyip.fullname" . }}
   labels:
     {{- include "whatismyip.labels" . | nindent 4 }}
@@ -9,7 +11,7 @@ spec:
   parentRefs:
     {{- toYaml .Values.httpRoute.parentRefs | nindent 4 }}
   hostnames:
-    {{- toYaml .Values.httpRoute.hostnames | nindent 4 }}
+    {{- toYaml .Values.httpRoute.hosts | nindent 4 }}
   rules:
     - matches:
         - path:

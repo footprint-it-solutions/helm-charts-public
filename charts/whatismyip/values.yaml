@@ -52,5 +52,5 @@ httpRoute:
   parentRefs:
   - name: default
     namespace: envoy-gateway-system
-  hostnames: []
+  hosts: []
   # - my-app.example.com
