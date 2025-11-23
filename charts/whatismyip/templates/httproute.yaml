@@ -3,7 +3,7 @@ apiVersion: gateway.networking.k8s.io/v1
 kind: HTTPRoute
 metadata:
   annotations:
-    link.argocd.argoproj.io/external-link: https://{{ first .Values.hosts }}
+    link.argocd.argoproj.io/external-link: https://{{ first .Values.httpRoute.hosts }}
   name: {{ include "whatismyip.fullname" . }}
   labels:
     {{- include "whatismyip.labels" . | nindent 4 }}
