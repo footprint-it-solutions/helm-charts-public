@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  netbird-peer:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2025-11-23T09:08:57.437802194Z"
+    description: A Helm chart for deploying a Netbird peer in Kubernetes
+    digest: 24cca4202d1073a8a9cb4120fa501997e9250332c10ead1f0ba7b01d90da5a42
+    name: netbird-peer
+    type: application
+    urls:
+    - netbird-peer-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-11-23T09:08:57.437432369Z"
