@@ -49,8 +49,8 @@ affinity: {}
 # HTTPRoute configuration
 httpRoute:
   enabled: false
-  parentRefs: []
-  # - name: my-gateway
-  #   namespace: gateway-namespace
+  parentRefs:
+  - name: default
+    namespace: envoy-gateway-system
   hostnames: []
   # - my-app.example.com
