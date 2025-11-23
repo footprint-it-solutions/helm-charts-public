@@ -3,7 +3,7 @@ entries:
   netbird-peer:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-11-23T09:08:57.437802194Z"
+    created: "2025-11-23T15:12:35.921026+03:00"
     description: A Helm chart for deploying a Netbird peer in Kubernetes
     digest: 24cca4202d1073a8a9cb4120fa501997e9250332c10ead1f0ba7b01d90da5a42
     name: netbird-peer
@@ -11,4 +11,15 @@ entries:
     urls:
     - netbird-peer-0.1.0.tgz
     version: 0.1.0
-generated: "2025-11-23T09:08:57.437432369Z"
+  whatismyip:
+  - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2025-11-23T15:12:35.92121+03:00"
+    description: A Helm chart for WhatIsMyIP service
+    digest: 4bd52665a2339bc5e15810e2d62f1bfa690afd291d644e9165a3cad6497bd2ee
+    name: whatismyip
+    type: application
+    urls:
+    - whatismyip-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-11-23T15:12:35.920488+03:00"
