@@ -16,8 +16,11 @@ spec:
     sgPostgresConfig: {{ .Release.Name }}
     observability:
       prometheusAutobind: {{ .Values.prometheusAutobind }}
+{{- if .Values.scripts }}
   managedSql:
+    continueOnSGScriptError: {{ .Values.continueOnSGScriptError }}
     scripts:
 {{ range .Values.scripts }}
       - sgScript: {{ .name }}
 {{ end }}
+{{- end }}

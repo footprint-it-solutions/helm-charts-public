@@ -4,23 +4,28 @@ kind: SGScript
 metadata:
   name: {{ .Release.Name }}
 spec:
+{{- if .Values.scripts }}
   scripts:
-{{ range .Values.scripts }}
-  - name: {{ .name }}
-{{ if .script }}
+{{- range $name, $script := .Values.scripts }}
+  - name: {{ $name }}
+{{- if $script.script }}
     script: |
-{{ .script | indent 6 }}
-{{ end }}
-{{ if or .configMapKeyRef .secretKeyRef  }}
+      {{ .script | indent 6 }}
+{{- end }}
+{{- if or $script.configMapKeyRef $script.secretKeyRef }}
     scriptFrom:
-{{ if .configMapKeyRef }}
+      {{- if $script.configMapKeyRef }}
       configMapKeyRef:
-        name: {{ .configMapKeyRef.name }}
-        key: {{ .configMapKeyRef.key }}
-{{ end }}
-{{ if .secretKeyRef }}
+        name: {{ $script.configMapKeyRef.name }}
+        key: {{ $script.configMapKeyRef.key }}
+      {{- end }}
+      {{- if $script.secretKeyRef }}
       secretKeyRef:
-        name: {{ .secretKeyRef.name }}
-        key: {{ .secretKeyRef.key }}
-{{ end }}
-{{ end }}
+        name: {{ $script.secretKeyRef.name }}
+        key: {{ $script.secretKeyRef.key }}
+      {{- end }}
+{{- end }}
+{{- end }}
+{{- else }}
+  scripts: []
+{{- end }}

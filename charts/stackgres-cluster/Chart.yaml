@@ -4,4 +4,4 @@ appVersion: "1.18.0" # Aligned with the StackGres Operator version
 description: A Helm chart for StackGres Cluster
 name: stackgres-cluster
 type: application
-version: 0.1.0
+version: 0.1.1
