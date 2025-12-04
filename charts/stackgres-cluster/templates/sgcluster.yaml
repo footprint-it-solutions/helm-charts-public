@@ -23,7 +23,7 @@ spec:
 {{- $scriptNames := keys .Values.scripts }}
 {{- range $index, $name := $scriptNames }}
 {{- $script := index $.Values.scripts $name }}
-      - id: {{ $index }}
+      - id: {{ add $index 1 }}
         sgScript: {{ $name }}
 {{ end }}
 {{- end }}

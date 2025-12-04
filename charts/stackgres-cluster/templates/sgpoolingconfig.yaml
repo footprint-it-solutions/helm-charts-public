@@ -1,0 +1,16 @@
+---
+{{ if .Values.poolingConfig }}
+apiVersion: stackgres.io/v1
+kind: SGPoolingConfig
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  pgBouncer:
+    {{- with (index .Values.poolingConfig.pgBouncer "pgbouncer.ini") }}
+    pgbouncer.ini:
+      pgbouncer:
+      {{- range $key, $value := . }}
+        {{ $key }}: '{{ $value }}'
+      {{- end }}
+    {{- end }}
+{{ end }}

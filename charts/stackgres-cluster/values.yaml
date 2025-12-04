@@ -11,6 +11,8 @@ persistentVolume:
   size: 1Gi
   storageClassName: ""
 
+poolingConfig: {}
+
 postgresConfig:
   name: default
   shared_buffers: 512MB
