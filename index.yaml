@@ -11,6 +11,17 @@ entries:
     urls:
     - netbird-peer-0.1.0.tgz
     version: 0.1.0
+  stackgres-cluster:
+  - apiVersion: v2
+    appVersion: 1.18.0
+    created: "2025-12-04T19:51:24.674874154Z"
+    description: A Helm chart for StackGres Cluster
+    digest: a12e213fe97ff51fbe710b63a9f6048a006b09b4f5aec1ba99841cbf7b04418f
+    name: stackgres-cluster
+    type: application
+    urls:
+    - stackgres-cluster-0.1.0.tgz
+    version: 0.1.0
   whatismyip:
   - apiVersion: v2
     appVersion: 0.2.0
@@ -52,4 +63,4 @@ entries:
     urls:
     - whatismyip-0.1.0.tgz
     version: 0.1.0
-generated: "2025-11-23T14:31:07.097038981Z"
+generated: "2025-12-04T19:51:24.660217029Z"
