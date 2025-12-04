@@ -7,23 +7,23 @@ spec:
 {{- if .Values.scripts }}
   scripts:
 {{- range $name, $script := .Values.scripts }}
-  - name: {{ $name }}
+    - name: {{ $name }}
 {{- if $script.script }}
     script: |
       {{ .script | indent 6 }}
 {{- end }}
 {{- if or $script.configMapKeyRef $script.secretKeyRef }}
-    scriptFrom:
-      {{- if $script.configMapKeyRef }}
-      configMapKeyRef:
-        name: {{ $script.configMapKeyRef.name }}
-        key: {{ $script.configMapKeyRef.key }}
-      {{- end }}
-      {{- if $script.secretKeyRef }}
-      secretKeyRef:
-        name: {{ $script.secretKeyRef.name }}
-        key: {{ $script.secretKeyRef.key }}
-      {{- end }}
+      scriptFrom:
+        {{- if $script.configMapKeyRef }}
+        configMapKeyRef:
+          name: {{ $script.configMapKeyRef.name }}
+          key: {{ $script.configMapKeyRef.key }}
+        {{- end }}
+        {{- if $script.secretKeyRef }}
+        secretKeyRef:
+          name: {{ $script.secretKeyRef.name }}
+          key: {{ $script.secretKeyRef.key }}
+        {{- end }}
 {{- end }}
 {{- end }}
 {{- else }}
