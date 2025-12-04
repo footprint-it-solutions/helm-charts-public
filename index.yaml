@@ -3,7 +3,7 @@ entries:
   netbird-peer:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-12-04T21:22:14.171229865Z"
+    created: "2025-12-04T21:27:54.928765887Z"
     description: A Helm chart for deploying a Netbird peer in Kubernetes
     digest: 24cca4202d1073a8a9cb4120fa501997e9250332c10ead1f0ba7b01d90da5a42
     name: netbird-peer
@@ -14,7 +14,17 @@ entries:
   stackgres-cluster:
   - apiVersion: v2
     appVersion: 1.18.0
-    created: "2025-12-04T21:22:14.172663111Z"
+    created: "2025-12-04T21:27:54.930720501Z"
+    description: A Helm chart for StackGres Cluster
+    digest: bea8e81cd0b95cc7ba5a32c70813f9245ad388cac35df2c5a424e1985d26f184
+    name: stackgres-cluster
+    type: application
+    urls:
+    - stackgres-cluster-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
+    appVersion: 1.18.0
+    created: "2025-12-04T21:27:54.930506003Z"
     description: A Helm chart for StackGres Cluster
     digest: f431b5bd941850b96cea54cf2e902458e58a9d97a39a6ba8e8f04c819bb2dd50
     name: stackgres-cluster
@@ -24,7 +34,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 1.18.0
-    created: "2025-12-04T21:22:14.172475229Z"
+    created: "2025-12-04T21:27:54.930158877Z"
     description: A Helm chart for StackGres Cluster
     digest: 07da78b67740ae86c02f31c98ce90961f625350fba7af25463e18c38cc0f07bd
     name: stackgres-cluster
@@ -34,7 +44,7 @@ entries:
     version: 0.1.5
   - apiVersion: v2
     appVersion: 1.18.0
-    created: "2025-12-04T21:22:14.172227098Z"
+    created: "2025-12-04T21:27:54.929990307Z"
     description: A Helm chart for StackGres Cluster
     digest: c232cb1d0a1aded422cf762b06cd1953103d051f050c26f9de8081557b6bea50
     name: stackgres-cluster
@@ -44,7 +54,7 @@ entries:
     version: 0.1.4
   - apiVersion: v2
     appVersion: 1.18.0
-    created: "2025-12-04T21:22:14.172057937Z"
+    created: "2025-12-04T21:27:54.929619517Z"
     description: A Helm chart for StackGres Cluster
     digest: 85aabd6defb4a4ca63ab9fdc861cc2c6f4a8b76c6c2cf4315fdb452aef30fa45
     name: stackgres-cluster
@@ -54,7 +64,7 @@ entries:
     version: 0.1.3
   - apiVersion: v2
     appVersion: 1.18.0
-    created: "2025-12-04T21:22:14.171874138Z"
+    created: "2025-12-04T21:27:54.929465974Z"
     description: A Helm chart for StackGres Cluster
     digest: 6df8cd82e8dd9cfd391186e39d2091abbdb83f70c29b25b52ba1d28a47bd5b14
     name: stackgres-cluster
@@ -64,7 +74,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.18.0
-    created: "2025-12-04T21:22:14.171709239Z"
+    created: "2025-12-04T21:27:54.929187845Z"
     description: A Helm chart for StackGres Cluster
     digest: 6bf603e7696e35c1cad70da975a1de51829efaff00bd062384e007f0d8aeb2e1
     name: stackgres-cluster
@@ -74,7 +84,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.18.0
-    created: "2025-12-04T21:22:14.171447658Z"
+    created: "2025-12-04T21:27:54.92900315Z"
     description: A Helm chart for StackGres Cluster
     digest: a12e213fe97ff51fbe710b63a9f6048a006b09b4f5aec1ba99841cbf7b04418f
     name: stackgres-cluster
@@ -85,7 +95,7 @@ entries:
   whatismyip:
   - apiVersion: v2
     appVersion: 0.2.0
-    created: "2025-12-04T21:22:14.174469913Z"
+    created: "2025-12-04T21:27:54.932690278Z"
     description: A Helm chart for WhatIsMyIP service
     digest: ae59088736d08981fc2b80443aaa84e6c451a27be32d8892e83f9ce6d7a850bb
     name: whatismyip
@@ -95,7 +105,7 @@ entries:
     version: 0.2.1
   - apiVersion: v2
     appVersion: 0.2.0
-    created: "2025-12-04T21:22:14.174263507Z"
+    created: "2025-12-04T21:27:54.932464445Z"
     description: A Helm chart for WhatIsMyIP service
     digest: d06ee116d3d7b0a8b35e0efde6379373e7786f4c8127983f7fb8792219c134e0
     name: whatismyip
@@ -105,7 +115,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-12-04T21:22:14.174039827Z"
+    created: "2025-12-04T21:27:54.932208432Z"
     description: A Helm chart for WhatIsMyIP service
     digest: 32085052a6f7f4c4799ac60812401d41f7b29bcd6717370f3ecb6f70244ffe56
     name: whatismyip
@@ -115,7 +125,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 0.1.0
-    created: "2025-12-04T21:22:14.173183991Z"
+    created: "2025-12-04T21:27:54.931912536Z"
     description: A Helm chart for WhatIsMyIP service
     digest: c1b9fd0e564444b48e916171579302c6c53e7881419911e8a93fe249b7f072f4
     name: whatismyip
@@ -123,4 +133,4 @@ entries:
     urls:
     - whatismyip-0.1.0.tgz
     version: 0.1.0
-generated: "2025-12-04T21:22:14.170985745Z"
+generated: "2025-12-04T21:27:54.928532744Z"

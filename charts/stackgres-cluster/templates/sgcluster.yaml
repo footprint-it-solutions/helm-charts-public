@@ -13,6 +13,7 @@ spec:
       size: {{ .Values.persistentVolume.size }}
       storageClassName: {{ .Values.persistentVolume.storageClassName }}
   configurations:
+    sgPoolingConfig: {{ .Release.Name }}
     sgPostgresConfig: {{ .Release.Name }}
     observability:
       prometheusAutobind: {{ .Values.prometheusAutobind }}
