@@ -1,0 +1,25 @@
+---
+instanceProfile:
+  cpu: "1"
+  memory: 2Gi
+
+instances: 1
+
+persistentVolume:
+  size: 1Gi
+  storageClassName: ""
+
+postgresConfig:
+  name: default
+  settings:
+    postgresql.conf:
+      shared_buffers: 512MB
+      random_page_cost: "1.5"
+      password_encryption: scram-sha-256
+      log_checkpoints: "on"
+
+postgresVersion: "17"
+
+prometheusAutobind: true
+
+scripts: {}

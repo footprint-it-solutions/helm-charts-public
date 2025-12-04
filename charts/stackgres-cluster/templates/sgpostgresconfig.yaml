@@ -1,0 +1,12 @@
+---
+apiVersion: stackgres.io/v1
+kind: SGPostgresConfig
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  postgresVersion: {{ .Values.postgresConfig.postgresVersion | quote }}
+  postgresql.conf:
+    shared_buffers: {{ .Values.postgresConfig.settings.postgresql.conf.shared_buffers }}
+    random_page_cost: {{ .Values.postgresConfig.settings.postgresql.conf.random_page_cost | quote }}
+    password_encryption: {{ .Values.postgresConfig.settings.postgresql.conf.password_encryption }}
+    log_checkpoints: {{ .Values.postgresConfig.settings.postgresql.conf.log_checkpoints | quote }}

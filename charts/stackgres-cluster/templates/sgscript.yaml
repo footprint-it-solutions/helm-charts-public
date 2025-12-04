@@ -1,0 +1,26 @@
+---
+apiVersion: stackgres.io/v1
+kind: SGScript
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  scripts:
+{{ range .Values.scripts }}
+  - name: {{ .name }}
+{{ if .script }}
+    script: |
+{{ .script | indent 6 }}
+{{ end }}
+{{ if or .configMapKeyRef .secretKeyRef  }}
+    scriptFrom:
+{{ if .configMapKeyRef }}
+      configMapKeyRef:
+        name: {{ .configMapKeyRef.name }}
+        key: {{ .configMapKeyRef.key }}
+{{ end }}
+{{ if .secretKeyRef }}
+      secretKeyRef:
+        name: {{ .secretKeyRef.name }}
+        key: {{ .secretKeyRef.key }}
+{{ end }}
+{{ end }}

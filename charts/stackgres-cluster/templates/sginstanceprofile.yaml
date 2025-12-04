@@ -1,0 +1,8 @@
+---
+apiVersion: stackgres.io/v1
+kind: SGInstanceProfile
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  cpu: {{ .Values.instanceProfiles.cpu | quote }}
+  memory: {{ .Values.instanceProfiles.memory }}

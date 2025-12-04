@@ -1,0 +1,23 @@
+---
+apiVersion: stackgres.io/v1
+kind: SGCluster
+metadata:
+  name: {{ .Release.Name }}
+spec:
+  postgres:
+    version: {{ .Values.postgresVersion | quote }}
+  instances: {{ .Values.instances }}
+  sgInstanceProfile: {{ .Release.Name }}
+  pods:
+    persistentVolume:
+      size: {{ .Values.persistentVolume.size }}
+      storageClassName: {{ .Values.persistentVolume.storageClassName }}
+  configurations:
+    sgPostgresConfig: {{ .Release.Name }}
+    observability:
+      prometheusAutobind: {{ .Values.prometheusAutobind }}
+  managedSql:
+    scripts:
+{{ range .Values.scripts }}
+      - sgScript: {{ .name }}
+{{ end }}
