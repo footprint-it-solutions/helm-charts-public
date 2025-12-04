@@ -20,7 +20,7 @@ spec:
   managedSql:
     continueOnSGScriptError: {{ .Values.continueOnSGScriptError }}
     scripts:
-{{ range .Values.scripts }}
-      - sgScript: {{ .name }}
+{{ range $name, $script := .Values.scripts }}
+      - sgScript: {{ $name }}
 {{ end }}
 {{- end }}
