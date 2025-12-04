@@ -4,7 +4,7 @@ kind: SGPostgresConfig
 metadata:
   name: {{ .Release.Name }}
 spec:
-  postgresVersion: {{ .Values.postgresConfig.postgresVersion | quote }}
+  postgresVersion: {{ .Values.postgresVersion | quote }}
   postgresql.conf:
     shared_buffers: {{ .Values.postgresConfig.shared_buffers }}
     random_page_cost: {{ .Values.postgresConfig.random_page_cost | quote }}
