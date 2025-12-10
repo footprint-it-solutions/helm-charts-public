@@ -1,0 +1,78 @@
+---
+replicaCount: 1
+
+image:
+  repository: 203918840229.dkr.ecr.eu-west-2.amazonaws.com/aerith/controller
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "v0.0.1"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+podSecurityContext: {}
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+manager:
+  args:
+    - --leader-elect
+  env:
+    - name: TRELLO_BOARD_ID
+      valueFrom:
+        secretKeyRef:
+          name: trello-credentials
+          key: TRELLO_BOARD_ID
+    - name: GEMINI_MODEL
+      value: gemini-2.5-flash
+    - name: LOG_LEVEL
+      value: info
+    - name: SOLUTION_GENERATOR_IMAGE
+      value: 203918840229.dkr.ecr.eu-west-2.amazonaws.com/aerith/solution-generator:v0.0.1
+  envFrom:
+    - secretRef:
+        name: gemini-credentials
+    - secretRef:
+        name: github-credentials
+    - secretRef:
+        name: trello-credentials
+  healthProbePort: 8081
+
+rbac:
+  create: true
+
+crds:
+  install: true

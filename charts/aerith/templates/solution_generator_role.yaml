@@ -1,0 +1,33 @@
+{{- if .Values.rbac.create -}}
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "aerith.fullname" . }}-solution-generator-role
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "aerith.labels" . | nindent 4 }}
+rules:
+- apiGroups:
+  - core.aerith.io
+  resources:
+  - engineeringsolutions
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - core.aerith.io
+  resources:
+  - engineeringsolutions/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - core.aerith.io
+  resources:
+  - engineeringtasks
+  verbs:
+  - get
+  - list
+{{- end }}
