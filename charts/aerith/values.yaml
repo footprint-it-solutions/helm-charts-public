@@ -1,6 +1,4 @@
 ---
-replicaCount: 0
-
 image:
   repository: 203918840229.dkr.ecr.eu-west-2.amazonaws.com/aerith/controller
   pullPolicy: IfNotPresent
