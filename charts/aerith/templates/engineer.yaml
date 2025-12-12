@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "aerith.fullname" . }}-engineer
+  labels:
+    {{- include "aerith.labels" . | nindent 4 }}
+    app.kubernetes.io/component: engineer
+spec:
+  replicas: {{ .Values.engineer.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "aerith.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: engineer
+  template:
+    metadata:
+      {{- with .Values.engineer.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "aerith.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: engineer
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "aerith.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.engineer.podSecurityContext | nindent 8 }}
+      containers:
+        - name: engineer
+          envFrom:
+            {{- toYaml .Values.engineer.envFrom | nindent 12 }}
+          securityContext:
+            {{- toYaml .Values.engineer.securityContext | nindent 12 }}
+          image: "{{ .Values.engineer.image.repository }}:{{ .Values.engineer.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.engineer.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {{- toYaml .Values.engineer.resources | nindent 12 }}
+      {{- with .Values.engineer.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.engineer.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.engineer.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

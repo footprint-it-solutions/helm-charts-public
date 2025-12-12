@@ -1,13 +1,14 @@
 ---
-replicaCount: 1
+replicaCount: 0
 
 image:
   repository: 203918840229.dkr.ecr.eu-west-2.amazonaws.com/aerith/controller
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v0.0.1"
+  tag: v0.0.7
 
-imagePullSecrets: []
+imagePullSecrets:
+  - name: ecr-token
 nameOverride: ""
 fullnameOverride: ""
 
@@ -32,7 +33,7 @@ securityContext: {}
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # resources, suchs as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   # limits:
   #   cpu: 100m
@@ -47,21 +48,38 @@ tolerations: []
 
 affinity: {}
 
+engineer:
+  affinity: {}
+  envFrom:
+    - secretRef:
+        name: gemini-credentials
+    - secretRef:
+        name: github-credentials
+  image:
+    pullPolicy: IfNotPresent
+    repository: 203918840229.dkr.ecr.eu-west-2.amazonaws.com/aerith/engineer
+    tag: v0.0.2
+  nodeSelector: {}
+  podAnnotations: {}
+  podSecurityContext: {}
+  replicaCount: 1
+  resources: {}
+  securityContext: {}
+  tolerations: []
+
 manager:
+  replicaCount: 0
   args:
     - --leader-elect
   env:
-    - name: TRELLO_BOARD_ID
-      valueFrom:
-        secretKeyRef:
-          name: trello-credentials
-          key: TRELLO_BOARD_ID
-    - name: GEMINI_MODEL
-      value: gemini-2.5-flash
     - name: LOG_LEVEL
       value: info
     - name: SOLUTION_GENERATOR_IMAGE
-      value: 203918840229.dkr.ecr.eu-west-2.amazonaws.com/aerith/solution-generator:v0.0.1
+      value: 203918840229.dkr.ecr.eu-west-2.amazonaws.com/aerith/solution-generator:v0.0.7
+    - name: SOLUTION_GENERATOR_PULL_SECRET
+      value: ecr-token
+    - name: SOLUTION_GENERATOR_SERVICE_ACCOUNT
+      value: aerith-solution-generator
   envFrom:
     - secretRef:
         name: gemini-credentials
@@ -70,6 +88,9 @@ manager:
     - secretRef:
         name: trello-credentials
   healthProbePort: 8081
+  metricsPort: 8080
+  secureMetrics: false
+  containerPort: 9443 # This is the webhook server port, not the manager metrics port
 
 rbac:
   create: true

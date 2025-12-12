@@ -14,7 +14,7 @@ This Helm chart deploys the Aerith Kubernetes operator, which automates the proc
 To install the chart with the release name `aerith-operator`:
 
 ```bash
-helm upgrade --install aerith-operator helm-charts-public/charts/aerith \
+helm upgrade --install aerith helm-charts-public/charts/aerith \
   --namespace aerith-system --create-namespace \
   --set manager.env[0].valueFrom.secretKeyRef.name=trello-credentials \
   --set manager.env[0].valueFrom.secretKeyRef.key=TRELLO_API_KEY \

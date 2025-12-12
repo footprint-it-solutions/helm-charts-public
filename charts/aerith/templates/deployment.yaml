@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "aerith.labels" . | nindent 4 }}
 spec:
-  replicas: {{ .Values.replicaCount }}
+  replicas: {{ .Values.manager.replicaCount }}
   selector:
     matchLabels:
       {{- include "aerith.selectorLabels" . | nindent 6 }}

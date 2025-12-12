@@ -1,9 +1,7 @@
+---
 apiVersion: v2
-name: aerith
-description: A Helm chart for the Aerith Kubernetes operator.
-type: application
-version: 0.1.0
 appVersion: "v0.0.1"
+description: A Helm chart for the Aerith Kubernetes operator.
 keywords:
   - aerith
   - operator
@@ -11,9 +9,11 @@ keywords:
   - controller
   - trello
   - gemini
-home: https://github.com/footprint-it-solutions/aerith
-sources:
-  - https://github.com/footprint-it-solutions/aerith
 maintainers:
   - name: Footprint IT Solutions
-    email: info@footprint-it-solutions.com
+    email: engineering@footprintit.net
+name: aerith
+sources:
+  - https://github.com/footprint-it-software-development/aerith
+type: application
+version: 0.1.0

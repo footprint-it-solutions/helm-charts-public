@@ -7,9 +7,20 @@ metadata:
     {{- include "aerith.labels" . | nindent 4 }}
 rules:
 - apiGroups:
+  - batch
+  resources:
+  - jobs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - watch
+- apiGroups:
   - core.aerith.io
   resources:
   - engineeringsolutions
+  - engineeringtasks
   verbs:
   - create
   - delete
@@ -28,40 +39,9 @@ rules:
   - core.aerith.io
   resources:
   - engineeringsolutions/status
-  verbs:
-  - get
-  - patch
-  - update
-- apiGroups:
-  - core.aerith.io
-  resources:
-  - engineeringtasks
-  verbs:
-  - create
-  - delete
-  - get
-  - list
-  - patch
-  - update
-  - watch
-- apiGroups:
-  - core.aerith.io
-  resources:
   - engineeringtasks/status
   verbs:
   - get
   - patch
   - update
-- apiGroups:
-  - authentication.k8s.io
-  resources:
-  - tokenreviews
-  verbs:
-  - create
-- apiGroups:
-  - authorization.k8s.io
-  resources:
-  - subjectaccessreviews
-  verbs:
-  - create
 {{- end }}
